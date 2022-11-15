@@ -9,6 +9,8 @@ import arrow
 from pandas import DataFrame
 
 from freqtrade.optimize.default_hyperopt import DefaultHyperOpts  # noqa: F401
+from freqtrade.optimize.bbrsi_opt import BBRSIOPT
+
 
 logger = logging.getLogger(__name__)
 

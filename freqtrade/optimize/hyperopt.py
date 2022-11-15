@@ -145,22 +145,20 @@ class Hyperopt(Backtesting):
         period = self.max_date - self.min_date
         days_period = period.days
 
-        #adding slippage of 0.1% per trade
+        #adding slippage of 0.05% per trade
         total_profit  = total_profit - 0.0005
         expected_yearly_return = total_profit.sum()/days_period
 
         if (np.std(total_profit) != 0.):
             sharp_ratio = expected_yearly_return/np.std(total_profit)*np.sqrt(365)
         else:
-            sharp_ratio = 1.
+            sharp_ratio = -20
 
         sharp_ratio = -sharp_ratio
-        print(expected_yearly_return, np.std(total_profit),sharp_ratio)
-
-
         result = sharp_ratio
         self.resultloss = result
         return result
+
 
     def has_space(self, space: str) -> bool:
         """
